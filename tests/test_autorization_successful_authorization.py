@@ -4,11 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from tests.locators import TestLocators
+
 EMAIL = 'te12s232tpyt@mail.ru'
 PAS = '12344232'
 
 # Вход по кнопке «Войти в аккаунт» на главной
-def test_login_via_main_button(setup_driver):
+def test_login_via_main_button(setup_driver, user):
     driver = setup_driver
     WebDriverWait(driver, 3).until(
         EC.visibility_of_element_located((By.XPATH, ".//button[text()='Войти в аккаунт']"))
@@ -23,8 +25,8 @@ def test_login_via_main_button(setup_driver):
     WebDriverWait(driver, 3).until(
         EC.visibility_of_element_located((By.XPATH, ".//button[text()='Оформить заказ']"))
     )
-    text = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']").text
-    assert text == 'Оформить заказ'
+    order_button = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']")
+    assert order_button.is_displayed()
 
 # Авторизация через Личный кабинет
 def test_login_via_personal_cabinet(setup_driver):
@@ -42,8 +44,8 @@ def test_login_via_personal_cabinet(setup_driver):
     WebDriverWait(driver, 3).until(
         EC.visibility_of_element_located((By.XPATH, ".//button[text()='Оформить заказ']"))
     )
-    text = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']").text
-    assert text == 'Оформить заказ'
+    order_button = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']")
+    assert order_button.is_displayed()
 
 # Вход через кнопку в форме восстановления пароля
 def test_login_via_forgot_password_form(setup_driver):
@@ -63,8 +65,8 @@ def test_login_via_forgot_password_form(setup_driver):
     WebDriverWait(driver, 3).until(
         EC.visibility_of_element_located((By.XPATH, ".//button[text()='Оформить заказ']"))
     )
-    text = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']").text
-    assert text == 'Оформить заказ'
+    order_button = driver.find_element(By.XPATH, ".//button[text()='Оформить заказ']")
+    assert order_button.is_displayed()
 
 if __name__ == "__main__":
     pytest.main()

@@ -9,3 +9,4 @@ class TestLocators:
     INPUT_EMAIL = By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']"
     INPUT_PASSWORD = By.XPATH, ".//input[@type='password']"
     BUTTON_REGISTRATION_1 = By.XPATH, ".//button[text()='Зарегистрироваться']"
+    PERSONAL_AREA = By.XPATH, ".//p[text()='Личный Кабинет']"
